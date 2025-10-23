@@ -11,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mvvm_pattern2">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,6 +30,10 @@
         <activity android:name=".mvp.MvpActivity"
             android:exported="false"
             android:label="MVP Calculator"/>
+
+        <activity android:name=".MvvmCalculatorActivity"
+            android:exported="false"
+            android:label="MVVM Calculator"/>
     </application>
 
 </manifest>

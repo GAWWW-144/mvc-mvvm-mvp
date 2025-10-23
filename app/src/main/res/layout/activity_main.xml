@@ -2,51 +2,39 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".MvcActivity"> <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <EditText
-        android:id="@+id/edit_text_num1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:inputType="numberDecimal"
-        android:hint="숫자 1"/>
-
-    <Spinner
-        android:id="@+id/spinner_operator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/operators" />
-
-    <EditText
-        android:id="@+id/edit_text_num2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:inputType="numberDecimal"
-        android:hint="숫자 2"/>
-</LinearLayout>
-
-    <Button
-        android:id="@+id/button_calculate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="="/>
+    tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/text_view_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사칙연산 계산기 패턴 선택"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="32dp"/>
+
+    <Button
+        android:id="@+id/btn_launch_mvc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:textSize="24sp"
-        android:text="결과"
-        android:gravity="center"/>
+        android:text="1. MVC 계산기 실행"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btn_launch_mvp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2. MVP 계산기 실행"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btn_launch_mvvm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3. MVVM 계산기 실행"
+        android:layout_marginBottom="16dp"/>
 </LinearLayout>

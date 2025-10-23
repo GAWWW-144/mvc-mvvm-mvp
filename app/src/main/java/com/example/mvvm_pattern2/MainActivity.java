@@ -1,46 +1,32 @@
 package com.example.mvvm_pattern2;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProvider;
+import com.example.mvvm_pattern2.mvc.MvcActivity;
+import com.example.mvvm_pattern2.mvp.MvpActivity;
+import com.example.mvvm_pattern2.R;
 
-import com.example.mvvm_pattern2.databinding.ActivityMainBinding;
-
+// 세 가지 패턴의 계산기 앱을 실행하는 메뉴 Activity 역할을 합니다.
 public class MainActivity extends AppCompatActivity {
-
-    private ActivityMainBinding binding;
-    private MainViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        //제거 : setContentView(R.layout.activity_main);
-        // layout과 activity 연결을 위한 변수 초기화 및 contentView 설정
-        //binding = ActivityMainBinding.inflate(getLayoutInflater());
-        //setContentView(binding.getRoot());
-        // 위의 두 문장을 한 문장으로 처리하려면 DataBindingUtil 클래스 사용
-        //viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        // MVVM 계산기는 MvvmCalculatorActivity라는 새로운 Activity를 사용합니다.
+
+        findViewById(R.id.btn_launch_mvc).setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, MvcActivity.class));
         });
 
-        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        binding.setViewModel(viewModel);
-        binding.setLifecycleOwner(this);
+        findViewById(R.id.btn_launch_mvp).setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, MvpActivity.class));
+        });
 
-        binding.btnDecrease.setOnClickListener(v -> viewModel.subtract());
-        binding.btnIncrease.setOnClickListener(v -> viewModel.add());
-
+        findViewById(R.id.btn_launch_mvvm).setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, MvvmCalculatorActivity.class));
+        });
     }
 }

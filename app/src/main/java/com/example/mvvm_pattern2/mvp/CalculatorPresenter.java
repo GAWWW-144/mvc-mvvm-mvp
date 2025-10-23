@@ -1,13 +1,13 @@
-package com.example.calculator.mvp;
+package com.example.mvvm_pattern2.mvp; // 패키지명 수정
 
-import com.example.calculator.model.CalculatorModel;
+import com.example.mvvm_pattern2.model.CalculatorModel; // Model import 수정
 
-public class CalculatorPresenter implements com.example.calculator.mvp.CalculatorContract.Presenter {
+public class CalculatorPresenter implements CalculatorContract.Presenter {
 
-    private com.example.calculator.mvp.CalculatorContract.View view;
+    private CalculatorContract.View view;
     private CalculatorModel model;
 
-    public CalculatorPresenter(com.example.calculator.mvp.CalculatorContract.View view) {
+    public CalculatorPresenter(CalculatorContract.View view) {
         this.view = view;
         this.model = new CalculatorModel();
     }
@@ -15,15 +15,15 @@ public class CalculatorPresenter implements com.example.calculator.mvp.Calculato
     @Override
     public void onCalculateClicked() {
         try {
-            // 1. Presenter가 View에게 입력값 요청
+            // Presenter가 View에게 입력값 요청
             double num1 = Double.parseDouble(view.getNum1Input());
             double num2 = Double.parseDouble(view.getNum2Input());
             String operator = view.getOperatorSelection();
 
-            // 2. Presenter가 Model에게 로직 수행 요청
+            // Presenter가 Model 호출
             double result = model.calculate(num1, num2, operator);
 
-            // 3. Presenter가 View에게 결과 표시를 명령
+            // Presenter가 View에게 결과 표시 명령
             view.showResult(String.valueOf(result));
 
         } catch (NumberFormatException e) {

@@ -1,8 +1,6 @@
-package com.example.calculator.mvp;
+package com.example.mvvm_pattern2.mvp; // 패키지명 수정
 
 public interface CalculatorContract {
-
-    // View: Presenter가 View에게 결과를 표시하라고 명령하는 메소드 정의
     interface View {
         String getNum1Input();
         String getNum2Input();
@@ -11,7 +9,6 @@ public interface CalculatorContract {
         void showError(String message);
     }
 
-    // Presenter: View가 Presenter에게 로직을 요청하는 메소드 정의
     interface Presenter {
         void onCalculateClicked();
     }
